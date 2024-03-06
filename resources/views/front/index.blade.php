@@ -6,9 +6,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
 
-  <link rel="stylesheet" href="../../assets/css/bootstrap-rtl.css">
-  <script src="../../assets/scripts/jquery-1.10.2.min.js"></script>
-  <script src="../../assets/scripts/bootstrap-rtl.js"></script>
+  <link rel="stylesheet" href="{{url('assets/css/bootstrap-rtl.css')}}">
+  <script src="{{url('/assets/scripts/jquery-1.10.2.min.js')}}"></script>
+  <script src="{{url('/assets/scripts/bootstrap-rtl.js')}}"></script>
+  
 </head>
 
 <body>

@@ -24,47 +24,41 @@
           <h4><a style="text-decoration: none; color: white;" href="./addProduct.html">افزودن محصولات</a></h4>
           <h4><a style="text-decoration: none; color: white;" href="./productList.html">لیست محصولات</a></h4>
           <h4><a style="text-decoration: none; color: white;" href="./usersList.html">لیست کاربران</a></h4>
+          <h4><a style="text-decoration: none; color: white;" href="./usersList.html">دسته بندی ها</a></h4>
           <h4><a style="text-decoration: none; color: white;" href="./usersList.html">خروج</a></h4>
         </div>
       </div>
       <div style="flex: 1">
         <div class="container">
-          <a href="https://toplearn.com" class="list-group-item">
+          <a href="#" class="list-group-item">
             <h4 style="margin-top: 50px">پنل ادمین</h4>
           </a>
         </div>
         <div class="container" style="margin-top: 170x" id="sidebar">
           <div class="panel panel-primary">
-            <div class="panel-heading">افزودن محصول</div>
+              @include('back.message')
+            <div class="panel-heading">دسته بندی جدید </div>
+          
+        
             <div class="panel-body">
-              <form>
+              <form action="{{route('admin.categories.store')}}" method="POST">
+                @csrf
                 <div class="form-group">
                   <label for="title">عنوان محصول </label>
-                  <input type="email" class="form-control" id="title" />
+                  <input type="text" class="form-control  @error('name') is-invalid @enderror" id="title"  name="name"  value="{{old('name')}}" />
+                  @error('name')
+                  <div class="alert alert-danger">{{$message}}</div>
+                  @enderror
                 </div>
+              
+              
+            
+               
                 <div class="form-group">
-                  <label for="price">قیمت</label>
-                  <input type="text" class="form-control" id="price" />
-                </div>
-                <div class="form-group">
-                  <label for="price">نوع محصول</label>
-                  <input type="text" class="form-control" id="price" />
-                </div>
-                <div class="form-group">
-                  <label for="image">تصویر</label>
-                  <input type="file" class="form-control" id="image" />
-                </div>
-                <div class="form-group">
-                  <label for="description">توضیحات</label>
-                  <textarea
-                    class="form-control"
-                    rows="10"
-                    id="description"
-                  ></textarea>
-                </div>
-                <button type="submit" class="btn btn-success btn-block">
-                  ثبت
-                </button>
+                  
+                  <button type="submit" class="btn btn-success">ذخیره</button>
+                  <a href="{{route('admin.categories')}}" class="btn btn-warning"> انصراف </a>
+              </div>
               </form>
             </div>
           </div>

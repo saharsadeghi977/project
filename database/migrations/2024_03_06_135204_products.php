@@ -13,11 +13,14 @@ return new class extends Migration
      */
     public function up()
     {
-        $table->bigInteger('id');
-        $table->string('name');
+         Schema::create('products', function (Blueprint $table){
+        $table->unsignedBigInteger('id');
+        $table->string('title');
         $table->integer('price');
         $table->string('image');
         $table->text('description');
+
+    });
 
     }
 
@@ -29,5 +32,6 @@ return new class extends Migration
     public function down()
     {
         //
+
     }
 };

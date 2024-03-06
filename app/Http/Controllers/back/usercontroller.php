@@ -1,8 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\back;
 
+use App\Http\Controllers\Controller;
+use App\Models\User;
+use Exception;
+use Illuminate\Foundation\Auth\User as AuthUser;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class usercontroller extends Controller
 {
@@ -13,7 +18,7 @@ class usercontroller extends Controller
      */
     public function index()
     {
-        $users = User::orderBy('id', 'DESC')->paginate(20);
+        $users = AuthUser::orderBy('id', 'DESC')->paginate(20);
         return view('back.users.users', compact('users'));
     }
 
@@ -120,7 +125,7 @@ class usercontroller extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(User $user)
     {
         //
         $user->delete();

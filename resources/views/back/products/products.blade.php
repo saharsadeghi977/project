@@ -22,7 +22,7 @@
         <div style="padding-right: 25px">
           <h3 style="margin-block: 20px;">فهرست پنل</h3>
           <h4><a style="text-decoration: none; color: white;" href="./addProduct.html">افزودن محصولات</a></h4>
-          <h4><a style="text-decoration: none; color: white;" href="./productList.html">لیست محصولات</a></h4>
+          <h4><a style="text-decoration: none; color: white;" href="{{route('admin.productes.create')}}">لیست محصولات</a></h4>
           <h4><a style="text-decoration: none; color: white;" href="./usersList.html">لیست کاربران</a></h4>
         </div>
       </div>
@@ -32,6 +32,7 @@
             <h4 style="margin-top: 50px">پنل ادمین</h4>
           </a>
         </div>
+        @include('back.messages')
         <div class="container" style="margin-top: 170x" id="sidebar">
           <div class="panel panel-primary">
             <div class="panel-heading">لیست محصولات</div>
@@ -39,26 +40,31 @@
               <table style="width:100%;">
                 <thead>
                     <tr style="padding-block: 10px;border-bottom: 1px solid black;">
-                        <td style="padding-block: 10px;text-align: center;">id</td>
                         <td style="padding-block: 10px;text-align: center;">عنوان محصول</td>
                        
                         <td style="padding-block: 10px;text-align: center;">قیمت</td>
                  
                         <td style="padding-block: 10px;text-align: center;">نوع محصول</td>
-                        <td style="padding-block: 10px;text-align: center;">تصویر</td>
                      
-                        <td style="padding-block: 10px;text-align: center;">ویرایش محصول</td>
-                        <td style="padding-block: 10px;text-align: center;">حذف محصول</td>
+                      
                     </tr>
                 </thead>
                 <tbody>
                     <tr style="padding-block: 10px;border-bottom: 1px solid rgb(196, 196, 196);">
-                        <td style="padding-block: 10px;text-align: center;">2</td>
-                        <td style="padding-block: 10px;text-align: center;">علی</td>
-                        <td style="padding-block: 10px;text-align: center;">ali@gmail.com</td>
-                        <td style="padding-block: 10px;text-align: center;">پیراهن مردانه</td>
-                        <td style="padding-block: 10px;text-align: center;">3</td>
-                        <td style="padding-block: 10px;text-align: center;">450000تومان</td>
+                     
+                        <td style="padding-block: 10px;text-align: center;">{{$product->name}}</td>
+                        <td style="padding-block: 10px;text-align: center;">{{$product->price}}</td>
+                        <td style="padding-block: 10px;text-align: center;"> @foreach ($product->categories()->pluck('name') as $category)
+                          <span class="badge badge-warning">{{$category}}</span>
+                          @endforeach
+
+                         </td>
+                        <td style="padding-block: 10px;text-align: center;">    <a href="{{route('admin.poducts.edit',$product->id)}}"
+                          class="badge badge-success">ویرایش</a>
+                      <a href="{{route('admin.products.destroy',$product->id)}}"
+                          onclick="return confirm('آیا آیتم مورد نظر حذف شود');"
+                          class="badge badge-warning"> حذف </a></td>
+                        
                     
                     </tr>
                 </tbody>

@@ -49,25 +49,21 @@
 
                     </div>
                     <div class="form-group">
-                      <label for="exampleInputpassword">رمزعبور را وارد کنید </label>
-                      <input type="password" name="password" class="form-control @error('password') is-invalid @enderror" id="exampleInputpassword" placeholder="رمز عبور " >
-                      @error('password')
-                   <div class="alert alert-danger">{{$message}}</div>
-                    
-                   @enderror
-
+               <label for="exampleInputpassword">رمز عبور را وارد کنید</label>
+                <input type="password" name="password" class="form-control @error('password') is-invalid @enderror" id="exampleInputpassword" placeholder="رمز عبور">
+                @error('password')
+              <div class="alert alert-danger">{{ $message }}</div>
+                 @enderror
                     </div>
 
-                   
-                    <div class="form-group">
-                      <label for="exampleInputpassword">تکرار رمز عبور</label>
-                      <input type="password" name="password2" class="form-control @error('password_confirmation') is-invalid @enderror"id="exampleInputpassword"  placeholder="تکرار رمز عبور ">
-                      @error('password_confirmation')
-                   <div class="alert alert-danger">{{$message}}</div>
+               <div class="form-group">
+              <label for="exampleInputpassword2">تکرار رمز عبور</label>
+             <input type="password" name="password_confirmation" class="form-control @error('password_confirmation') is-invalid @enderror" id="exampleInputpassword2" placeholder="تکرار رمز عبور">
+              @error('password_confirmation')
+              <div class="alert alert-danger">{{ $message }}</div>
+                  @enderror
+                  </div>
                     
-                   @enderror
-
-                    </div>
                   
                     <div class="checkbox">
                       <label>
@@ -80,7 +76,9 @@
                     <button type="submit" class="btn btn-success btn-block"> ثبت نام</button>
                     <!-- login must be a url -->
                   </form>
-                  <a href="#"><button type="submit" class="btn btn-success btn-block">ورود به سایت</button></a>
+                  <div>
+                  <a href="{{route('login')}}"><button type="submit" class="btn btn-success btn-block">ورود به سایت</button></a>
+</div>
             </div>
           </div>
 </body>

@@ -14,10 +14,12 @@ return new class extends Migration
     public function up()
     {
         //
-        $table=bigIncreament('id');
-        $table=string('name');
-        $table=$table->timestamps();
-    }
+        Schema::create('product-category', function (Blueprint $table){
+        $table->bigIncrements('id');
+            $table->integer('product_id');
+            $table->integer('category_id');
+    });
+}
 
     /**
      * Reverse the migrations.
@@ -26,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-       
+        //
     }
 };

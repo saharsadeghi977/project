@@ -1,10 +1,31 @@
+
+
+
+
+
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <link rel="stylesheet" href="../../assets/css/bootstrap-rtl.css">
+  <script src="../../assets/scripts/jquery-1.10.2.min.js"></script>
+  <script src="../../assets/scripts/bootstrap-rtl.js"></script>
+</head>
+<body>
+
+
+
 <section id="intro2" class="clearfix"></section>
 
 <main class="container main2">
   <nav aria-label="breadcrumb ">
     <ol class="breadcrumb bgcolor">
       <li class="breadcrumb-item"><a href="#">خانه</a></li>
-      <li class="breadcrumb-item active" aria-current="page">ثبت نام</li>
+      <li class="breadcrumb-item active" aria-current="page">ویرایش پروفایل</li>
     </ol>
   </nav>
 
@@ -14,7 +35,7 @@
   @include('front.messages')
 
   <div class="d-flex justify-content-center">
-    <form action="{{route('profileupdate',$user->id)}}" method="POST">
+    <form action="{{route('profileupdate',$user)}}" method="POST">
       @csrf
       <div class="form-group">
         <label >نام و نام خانوادگی</label>
