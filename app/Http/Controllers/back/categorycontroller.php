@@ -55,7 +55,7 @@ class categorycontroller extends Controller
             switch ($exception->getCode()) {
                
             }
-            return redirect(route('admin.categories.create'))->with('warning', $msg);
+            return redirect(route('admin.categories.create'))->with('warning',$exception->getMessage());
         }
 
         $msg = "ذخیره ی دسته بندی جدید با موفقیت انجام شد";
@@ -101,16 +101,14 @@ class categorycontroller extends Controller
         ];
         $validatedData = $request->validate([
             'name' => 'required',
-            'slug' => 'required|unique:categories'
+        
         ], $messages);
 
         try {
             $category->update($request->all());
         } catch (Exception $exception) {
-            switch ($exception->getCode()) {
-               
-            }
-            return redirect(route('admin.categories.edit'))->with('warning', $exception->getCode());
+          
+            return redirect(route('admin.categories.edit'))->with('warning', $exception->getmessage());
         }
 
         $msg = "ذخیره ی دسته بندی جدید با موفقیت انجام شد";

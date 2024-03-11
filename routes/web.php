@@ -38,6 +38,7 @@ Route::prefix('admin')->middleware('checkrole')->group(function () {
 
 Route::prefix('admin/categories')->middleware('checkrole')->group(function () {
   Route::get('/', [CA::class ,'index'])->name('admin.categories');
+  Route::get('/create', [CA::class ,'create'])->name('admin.categories.create');
   Route::post('/store', [CA::class ,'store'])->name('admin.categories.store');
   Route::get('/edit/{category}', [CA::class ,'edit'])->name('admin.categories.edit');
   Route::post('/update/{category}', [CA::class ,'update'])->name('admin.categories.update');
@@ -85,3 +86,8 @@ Route::middleware('auth')->group(function () {
 require __DIR__.'/auth.php';
 Route::get('/profile/{user}', [UserController::class ,'edit'])->name('profile')->middleware(['auth', 'verified']);
 Route::post('/update/{user}', [usercontroller::class ,'update'])->name('profileupdate');
+
+Route::get('/product', 'front\productController@index')->name('articles');
+Route::get('/product/{product}', 'front\productController@show')->name('productDetail');
+Route::post('/add-to-cart/{product}', 'front\orderController@addtocart')->name('addtocart');
+Route::post('/add-to-cart/{product}', 'front\orderController@cartshow')->name('addtocart');

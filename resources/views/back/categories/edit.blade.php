@@ -38,7 +38,7 @@
                                           </div>
                                           <div class="container" style="margin-top: 170x" id="sidebar">
                                             <div class="panel panel-primary">
-                                                @include('back.message')
+                                                @include('back.messages')
                                               <div class="panel-heading">دسته بندی جدید </div>
                                             
                                           

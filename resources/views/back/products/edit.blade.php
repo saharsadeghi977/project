@@ -34,22 +34,23 @@
             <h4 style="margin-top: 50px">پنل ادمین</h4>
           </a>
         </div>
+        @include('back.message')
         <div class="container" style="margin-top: 170x" id="sidebar">
           <div class="panel panel-primary">
-              @include('back.message')
+             
             <div class="panel-heading">ویرایش محصول</div>
           
         
             <div class="panel-body">
-              <form action="{{route('admin.products.update' $product->id)}}" method="POST">
+              <form action="{{route('admin.products.update') $product->id}}" method="POST">
                 @csrf
                 <div class="form-group">
                   <label for="title">عنوان محصول </label>
-                  <input type="text" class="form-control  @error('name') is-invalid @enderror" id="title"  name="name"  value="{{$product->name}}" />
+                  <input type="text" class="form-control  @error('title') is-invalid @enderror" id="title"  name="title"  value="{{$product->title}}" />
                 </div>
                 <div class="form-group">
                   <label for="price">قیمت</label>
-                  <input type="text" class="form-control @error('price') is-invalid @enderror" id="price"  name="price"  value="{{$product->price}}"  />
+                  <input type="number" class="form-control @error('price') is-invalid @enderror" id="price"  name="price"  value="{{$product->price}}"  />
                 </div>
                 <div class="form-group">
                     <label for="title">انتخاب دسته بندی</label>

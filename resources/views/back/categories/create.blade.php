@@ -4,30 +4,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-
-    <link rel="stylesheet" href="../../css/bootstrap-rtl.css" />
-    <script src="../../assets/scripts/jquery-1.10.2.min.js"></script>
-    <script src="../../assets/scripts/bootstrap-rtl.js"></script>
+    <link rel="stylesheet" href="{{ url('assets/css/bootstrap-rtl.css') }}">
+    
   </head>
+  
+  
   <body>
-    <div style="display: flex">
-      <div
-        style="
-          height: 100vh;
-          width: 300px;
-          background-color: #428bca;
-          color: white;
-        "
-      >
-        <div style="padding-right: 25px">
-          <h3 style="margin-block: 20px;">فهرست پنل</h3>
-          <h4><a style="text-decoration: none; color: white;" href="./addProduct.html">افزودن محصولات</a></h4>
-          <h4><a style="text-decoration: none; color: white;" href="./productList.html">لیست محصولات</a></h4>
-          <h4><a style="text-decoration: none; color: white;" href="./usersList.html">لیست کاربران</a></h4>
-          <h4><a style="text-decoration: none; color: white;" href="./usersList.html">دسته بندی ها</a></h4>
-          <h4><a style="text-decoration: none; color: white;" href="./usersList.html">خروج</a></h4>
-        </div>
-      </div>
+   
+    
       <div style="flex: 1">
         <div class="container">
           <a href="#" class="list-group-item">
@@ -36,7 +20,7 @@
         </div>
         <div class="container" style="margin-top: 170x" id="sidebar">
           <div class="panel panel-primary">
-              @include('back.message')
+              @include('back.messages')
             <div class="panel-heading">دسته بندی جدید </div>
           
         
@@ -65,5 +49,11 @@
         </div>
       </div>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+    integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous">
+</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"
+    integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous">
+</script>
   </body>
 </html>

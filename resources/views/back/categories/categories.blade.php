@@ -10,22 +10,7 @@
     <script src="../../scripts/bootstrap-rtl.js"></script>
   </head>
   <body>
-    <div style="display: flex">
-      <div
-        style="
-          height: 100vh;
-          width: 300px;
-          background-color: #428bca;
-          color: white;
-        "
-      >
-        <div style="padding-right: 25px">
-          <h3 style="margin-block: 20px;">فهرست پنل</h3>
-          <h4><a style="text-decoration: none; color: white;" href="{{route('admin.productes.create')}}">لیست محصولات</a></h4>
-          <h4><a style="text-decoration: none; color: white;" href="{{route('admin.users')}}">لیست کاربران</a></h4>
-          <h4><a style="text-decoration: none; color: white;" href="{{route('admin.categories')}}">لیست دسته بندی ها</a></h4>
-        </div>
-      </div>
+    @include('back.sidebar')
       <div style="flex: 1">
         <div class="container">
           <a href="https://toplearn.com" class="list-group-item">
@@ -52,7 +37,7 @@
                     @foreach ($categories as $category)
                     <tr style="padding-block: 10px;border-bottom: 1px solid rgb(196, 196, 196);">
                      
-                        <td style="padding-block: 10px;text-align: center;">{{$product->name}}</td>
+                        <td style="padding-block: 10px;text-align: center;">{{$category->name}}</td>
                      
                      
                         <td style="padding-block: 10px;text-align: center;">    <a href="{{route('admin.categories.edit',$category->id)}}"
@@ -63,6 +48,7 @@
                         
                     
                     </tr>
+                    @endforeach
                 </tbody>
             </table>
             </div>

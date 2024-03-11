@@ -6,8 +6,7 @@
     <title>پنل ادمین</title>
 
     <link rel="stylesheet" href="{{url('assets/css/bootstrap-rtl.css') }}" />
-     <script src="scripts/jquery-1.10.2.min.js"></script>
-    <script src="scripts/bootstrap-rtl.js"></script> 
+    
   </head>
   <body>
   

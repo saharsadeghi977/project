@@ -5,80 +5,59 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
 
-    <link rel="stylesheet" href="../../css/bootstrap-rtl.css" />
-    <script src="../../assets/scripts/jquery-1.10.2.min.js"></script>
-    <script src="../../assets/scripts/bootstrap-rtl.js"></script>
+    <link rel="stylesheet" href="{{url('assets/css/bootstrap-rtl.css') }}" />
   </head>
   <body>
-    <div style="display: flex">
-      <div
-        style="
-          height: 100vh;
-          width: 300px;
-          background-color: #428bca;
-          color: white;
-        "
-      >
-        <div style="padding-right: 25px">
-          <h3 style="margin-block: 20px;">فهرست پنل</h3>
-          <h4><a style="text-decoration: none; color: white;" href="./addProduct.html">افزودن محصولات</a></h4>
-          <h4><a style="text-decoration: none; color: white;" href="./productList.html">لیست محصولات</a></h4>
-          <h4><a style="text-decoration: none; color: white;" href="./usersList.html">لیست کاربران</a></h4>
-          <h4><a style="text-decoration: none; color: white;" href="./usersList.html">دسته بندی ها</a></h4>
-          <h4><a style="text-decoration: none; color: white;" href="./usersList.html">خروج</a></h4>
-        </div>
-      </div>
+    {{-- @include('back.sidebar') --}}
+    @include('back.messages')
       <div style="flex: 1">
         <div class="container">
           <a href="#" class="list-group-item">
             <h4 style="margin-top: 50px">پنل ادمین</h4>
           </a>
         </div>
+      
         <div class="container" style="margin-top: 170x" id="sidebar">
           <div class="panel panel-primary">
-              @include('back.message')
+              
             <div class="panel-heading">افزودن محصول</div>
           
         
             <div class="panel-body">
-              <form action="{{route('admin.products.store')}}" method="POST">
+              <form action="{{route('admin.products.store')}}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="form-group">
                   <label for="title">عنوان محصول </label>
-                  <input type="text" class="form-control  @error('name') is-invalid @enderror" id="title"  name="name"  value="{{old('name')}}" />
+                  <input type="text" class="form-control  @error('title') is-invalid @enderror" id="title"  name="title"  value="{{old('title')}}" />
                 </div>
                 <div class="form-group">
                   <label for="price">قیمت</label>
-                  <input type="text" class="form-control @error('price') is-invalid @enderror" id="price"  name="price"  value="{{old('price')}}"  />
+                  <input type="number" class="form-control @error('price') is-invalid @enderror" id="price"  name="price"  value="{{old('price')}}"  />
                 </div>
                 <div class="form-group">
                   <label for="title">انتخاب دسته بندی</label>
                   <div id="output"></div>
-                  <select class="chosen-select" name="categories[]" multiple style="width:400px">
+                  <select class="chosen-select" name="categories"  style="width:400px">
                       @foreach ($categories as $cat_id => $cat_name)
                       <option value="{{$cat_id}}">{{$cat_name}}</option>
                       @endforeach
 
                   </select>
+                  
+               
               </div>
-              <div class="input-group">
-                <span class="input-group-btn">
-                    <a href="#" id="lfm" data-input="image" data-preview="holder"
-                        class="btn btn-primary">
-                        <i class="fa fa-picture-o"></i> انتخاب
-                    </a>
-                </span>
-                <input id="image" class="form-control" type="text" name="image">
-            </div>
-            <img id="holder" style="margin-top:15px;max-height:100px;">
-            <hr>
+              <div class="form-group">
+                <label for="price">انتخاب تصویر</label>
+                <input type="file" class="form-control @error('image') is-invalid @enderror" id="image"  name="im"  value="{{old('image')}}"  />
+              </div>
+<hr>
                 <div class="form-group">
-                  <label for="description">توضیحات</label>
+                  <label for="body">توضیحات</label>
                   <textarea
-                  id="editor" type="text"
+                  id="body" type="text"
                   class="form-control @error('description') is-invalid @enderror"
                   name="description">{{old('description')}}
-                  ></textarea>
+                  </textarea>
                 </div>
                 <div class="form-group">
                   
@@ -91,5 +70,11 @@
         </div>
       </div>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+    integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous">
+</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"
+    integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous">
+</script>
   </body>
 </html>
