@@ -101,30 +101,67 @@
       </div>
 </div>
 
+
 <div style="width: 100%;min-height: 900px; margin-top: 100px; display: flex; align-items: center; flex-direction: column; gap: 10px;">
     <button style="border: none;background-color: green;padding: 10px; color: white; font-size: 20px; border-radius: 5px;">پرداخت نهایی</button>
+    @if($cart->count>0)
     <table style="width: 80%;">
         <thead>
             <tr style="padding-block: 10px;border-bottom: 1px solid black;">
-                <td style="padding-block: 10px;text-align: center;">#</td>
+                <td style="padding-block: 10px;text-align: center;">num</td>
                 <td style="padding-block: 10px;text-align: center;">نام</td>
-                <td style="padding-block: 10px;text-align: center;">قیمت</td>
+                <td style="padding-block: 10px;text-align: center;">تصویر</td>
+                <td style="padding-block: 10px;text-align: center;">نوع</td>
                 <td style="padding-block: 10px;text-align: center;">تعداد</td>
+                <td style="padding-block: 10px;text-align: center;">قیمت</td>
                 <td style="padding-block: 10px;text-align: center;">قیمت نهایی</td>
             </tr>
         </thead>
         <tbody>
+          @foreach($cart->products as $key=>$item)
             <tr style="padding-block: 10px;border-bottom: 1px solid rgb(196, 196, 196);">
-                <td style="padding-block: 10px;text-align: center;"><img width="50px" src="https://toplearn.com/img/course/img-course-%D8%B3%D9%87-%D8%B4%D9%86%D8%A8%D9%87-%DB%B5-%D8%AF%DB%8C-%DB%B1%DB%B3%DB%B9%DB%B6-54859757-1114.jpg" alt="..."></td>
-                <td style="padding-block: 10px;text-align: center;">استرپ (BootStrap)</td>
-                <td style="padding-block: 10px;text-align: center;">35000</td>
-                <td style="padding-block: 10px;text-align: center;">4</td>
-                <td style="padding-block: 10px;text-align: center;">140000</td>
+              <td style="padding-block: 10px;text-align: center;">{{$key+1}}</td>
+              <td style="padding-block: 10px;text-align: center;">{{$item['product']->title}}</td>
+                <td style="padding-block: 10px;text-align: center;"><img width="50px" src="{{url()->asset("storage/".$item['product']->image)}}" ></td>
+                <td style="padding-block: 10px;text-align: center;">بچه گانه </td>
+                <td style="padding-block: 10px;text-align: center;"><form action="" method="post" >
+                  @csrf
+                  @methode
+                  ("patch")
+                 
+                  <div class="d-inline-block me-1">
+                    <input type="number" name="count" id="count" class="form-control" vlue="{{$item->count}}">
+                  </div>
+                  <div class="d-inline-block me-1">
+                    <button class="btn btn-warning">ویرایش
+
+                    </button>
+
+                  </div>
+                  </form>
+                
+
+                </td>
+                <td style="padding-block: 10px;text-align: center;">{{number_format($item['product']->price)}}$</td>
+                <td style="padding-block: 10px;text-align: center;">{{$item['product']->price * $item->count}}$</td>
+                <td style="padding-block: 10px;text-align: center;">
+                <form  action="" method="post">
+                  @csrf
+                  @method("DELETE")
+                  <bottm class= "btn btn-warning"> حذف</bottm></form></td>
             </tr>
+            @endforeach
         </tbody>
     </table>
 </div>
+@else
 
+    <div class="col-auto">
+      <a  class="btn-btn-warning" href={{route{"home"}}}>سبد خرید  شما خالیست</a>
+    </div>
+    @endif
+ 
+   
 <div id="footer" class="row" >
 
 

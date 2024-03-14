@@ -19,7 +19,7 @@ class ProductController extends Controller
     public function index()
     {
         //
-        $products = product::orderBy('id', 'DESC')->paginate(20);
+        $products = product::orderBy('id', 'DESC')->paginate(5);
         return view('back.products.products', compact('products'));
     }
 

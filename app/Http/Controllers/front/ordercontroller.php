@@ -23,6 +23,7 @@ class ordercontroller extends Controller
 
         $oldcart=$request->session()->has("cart")? $request->session()->get("cart"):null;
         $cart=new cart($oldcart);
+        return view("front.cart");
        
     }
 }

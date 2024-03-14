@@ -58,12 +58,14 @@
                         </form>
                         <form class="navbar-form navbar-left">
 
-                            <button type="submit" class="btn btn-default navbar-btn">
-                                <li class="glyphicon glyphicon-"><a href="./cart.html">سبد خرید</a></i>
-
-                            </button>
-
-                        </form>
+                            <a class="nav_Link" href="#" id="basket">
+                             <i class="fas fa-shoping-basket item-icon"></i>
+                             @if($cart->count>0)
+                             <span class="qty">{{$cart->count}}</span>
+                            </a>
+                             @endif
+                         </form>
+                
                         <ul class="nav navbar-nav navbar-right">
                             <li><a href="#">همکاری با ما</a></li>
                             <li class="dropdown">
@@ -95,7 +97,7 @@
                         </ul>
 
                         <ul>
-                            <li></li>
+                            <li>        </li>
                         </ul>
                     </div><!-- /.navbar-collapse -->
                 </div><!-- /.container-fluid -->

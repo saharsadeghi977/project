@@ -8,6 +8,8 @@ use Illuminate\Support\Facades\Route;
   use App\Http\Controllers\back\AdminController AS AD;
    use App\Http\Controllers\back\categorycontroller AS CA;
    use App\Http\Controllers\back\productController AS PR;
+   use App\Http\Controllers\front\productcontroller AS PRF;
+   use App\Http\Controllers\front\orderController AS ORF;
 
 
 /*
@@ -21,7 +23,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-
+Route::get('/', [PRF::class,'index'])->name('home');
+Route::get('/product/{product}', [PRF::class,'show'])->name('productDetail');
+Route::post('/add-to-cart/{product}', [ORF::class,'addtocart'])->name('addtocart');
+Route::post('/add-to-cart/{product}', [ORF::class,'cartshow'])->name('cartshow');
 
 Route::get('/profile/{user}', [UserController::class ,'edit'])->name('profile')->middleware(['auth', 'verified']);
 Route::post('/update/{user}', [usercontroller::class ,'update'])->name('profileupdate');
@@ -77,17 +82,14 @@ Route::middleware('auth')->group(function () {
 
 
   Route::get('/login', [showLoginForm::class, 'show'])->name('login');
-  Route::get('/', [front\HomeController::class ,'index'])->name('home');
+  // Route::get('/', [front\HomeController::class ,'index'])->name('home');
 
- Route::get('/', function () {
-         return view('front.index');
+//  Route::get('/', function () {
+//          return view('front.index');
  
-       })->name('home');
+//        })->name('home');
 require __DIR__.'/auth.php';
 Route::get('/profile/{user}', [UserController::class ,'edit'])->name('profile')->middleware(['auth', 'verified']);
 Route::post('/update/{user}', [usercontroller::class ,'update'])->name('profileupdate');
 
-Route::get('/product', 'front\productController@index')->name('articles');
-Route::get('/product/{product}', 'front\productController@show')->name('productDetail');
-Route::post('/add-to-cart/{product}', 'front\orderController@addtocart')->name('addtocart');
-Route::post('/add-to-cart/{product}', 'front\orderController@cartshow')->name('addtocart');
+

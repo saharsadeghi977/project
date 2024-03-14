@@ -26,4 +26,9 @@ public function getImageShowAttribute(){
     return url()->asset("storage/".$this->image);
 
 }
+public function getHrefurlAttribute(){
+    return route("productDetail",['product' =>$this->id]);
+
+}
+
 }

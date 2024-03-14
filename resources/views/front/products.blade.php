@@ -11,11 +11,11 @@
      <li><a href="#"><button type="submit" class="btn btn-primery btn-block">  </button>  </a> </li>
     </ul>
   </div>
-  @foreach($products as $product)
+  {{-- @foreach($products as $product) --}}
   <div class="container" style="margin-top: 10px">
     <div class="col-sm-6 col-md-4">
       <div class="thumbnail">
-        <img src="{{url()->asset("storage/".$product->image)}}" alt="...">
+        {{-- <img src="{{url()->asset("storage/".$product->image)}}" alt="..."> --}}
         <div class="caption">
           <h3>آموزش بوت استرپ (BootStrap) </h3>
           <h4 >25000000</h4>
@@ -50,12 +50,7 @@
     
             
            
-  </div>
-
-
-
-      </div>
-</div>
+  
 
 
 

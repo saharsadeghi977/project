@@ -13,14 +13,15 @@ class cart extends Model
     public $count=0;
     public $price=0;
     public $address=null;
+
     public function __construct($cart=null){
         if(!is_null($cart))
 
         {
-            $this->products = $cart->product;
-            $this->count = $cart->count;
-            $this->price = $cart->price;
-            $this->address = $cart->address;
+            $this->product = $cart['product'];
+            $this->count = $cart['count'];
+            $this->price = $cart['price'];
+            $this->address = $cart['address'];
         }
     }
     public function addtocart($product){
