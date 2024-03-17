@@ -22,8 +22,7 @@
             <h2>{{ $product->title }} </h2>
             <h3 ><span style="margin-left: 4px;">{{ number_format($product->price) }}$</span></h3>
         </div>
-        <form action="{{route('addtocart',$product->id)}}  " method="post">
-          {{dd(post)}}
+        <form action="{{route('add_to_cart',$product->id)}}" method="POST">
           @csrf
         <button style="border: none;background-color: green;padding: 10px; color: white; font-size: 20px; border-radius: 5px;">افزودن به سبد خرید</button>
         </form>

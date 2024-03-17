@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Route;
    use App\Http\Controllers\back\categorycontroller AS CA;
    use App\Http\Controllers\back\productController AS PR;
    use App\Http\Controllers\front\productcontroller AS PRF;
-   use App\Http\Controllers\front\orderController AS ORF;
+   use App\Http\Controllers\front\ordercontroller AS ORF;
 
 
 /*
@@ -25,8 +25,11 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [PRF::class,'index'])->name('home');
 Route::get('/product/{product}', [PRF::class,'show'])->name('productDetail');
-Route::post('/add-to-cart/{product}', [ORF::class,'addtocart'])->name('addtocart');
-Route::post('/add-to-cart/{product}', [ORF::class,'cartshow'])->name('cartshow');
+Route::post('/add-to-cart/{id}', [PRF::class,'addTocart'])->name('add_to_cart');
+Route::get('/cart', [PRF::class,'cartshow'])->name('cartshow');
+Route::get('/remove_from_cart', [PRF::class,'remove'])->name('remove');
+Route::post('/update_from-cart', [PRF::class,'update'])->name('update');
+
 
 Route::get('/profile/{user}', [UserController::class ,'edit'])->name('profile')->middleware(['auth', 'verified']);
 Route::post('/update/{user}', [usercontroller::class ,'update'])->name('profileupdate');

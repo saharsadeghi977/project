@@ -35,7 +35,7 @@
                             <li><a href="#" class="link-dark">درباره ما</a></li>
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
-                                    aria-haspopup="true" aria-expanded="false">نمونه محصولات ا<span
+                                    aria-haspopup="true" aria-expanded="false">نمونه محصولات <span
                                         class="caret"></span></a>
                                 <ul class="dropdown-menu">
                                     <li><a href="#">زنانه </a></li>
@@ -56,15 +56,21 @@
                             </button>
 
                         </form>
-                        <form class="navbar-form navbar-left">
+                       
 
-                            <a class="nav_Link" href="#" id="basket">
-                             <i class="fas fa-shoping-basket item-icon"></i>
-                             @if($cart->count>0)
-                             <span class="qty">{{$cart->count}}</span>
-                            </a>
-                             @endif
-                         </form>
+                         <form class="navbar-form navbar-left">
+                        
+                          
+                            <button type="submit" class="btn btn-default navbar-btn">
+                                
+                              <li class="glyphicon glyphicon-">
+                               
+                                <a href="{{route('cartshow')}}">سبد خرید{{count((array)session('cart'))}}</a></i>
+                              
+              
+                            </button>
+              
+                          </form>
                 
                         <ul class="nav navbar-nav navbar-right">
                             <li><a href="#">همکاری با ما</a></li>
